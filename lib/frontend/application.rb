@@ -4,7 +4,7 @@ require "frontend/config/routes"
 module Frontend
   class Application
     def initialize
-      Dotenv.load!
+      Dotenv.load
     end
 
     def call(env)
