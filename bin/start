@@ -1,0 +1,11 @@
+#! /bin/sh
+
+if [ -z $ENV ]; then ENV=development; fi
+
+if [ -z $PORT ]; then PORT=8080; fi
+
+if [ -z $HOST ]; then HOST=0.0.0.0; fi
+
+CONFIG_FILE=config/${ENV}.ru
+
+unicorn -p$PORT -o$HOST -Ilib -E$ENV $CONFIG_FILE
