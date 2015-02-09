@@ -1,5 +1,5 @@
 require "frontend/deployments/deployment"
-require "registrar/deployment/fetch_all"
+require "registrar/deployments/fetch_all"
 
 module Frontend
   module Deployments
@@ -21,7 +21,7 @@ module Frontend
       end
 
       def parsed_response
-        Registrar::Deployment::FetchAll[].parsed_response
+        Registrar::Deployments::FetchAll[].parsed_response
       end
     end
   end

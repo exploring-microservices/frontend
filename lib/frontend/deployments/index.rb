@@ -9,11 +9,11 @@ module Frontend
       layout Frontend::Template::ApplicationLayout
 
       def create_path
-        "/deployment/create"
+        "/deployments/create"
       end
 
-      def deployment_path(deployment_id)
-        "/deployment/#{deployment_id}"
+      def deployments_path(deployment_id)
+        "/deployments/#{deployment_id}"
       end
     end
   end

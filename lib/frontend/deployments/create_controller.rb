@@ -7,13 +7,13 @@ module Frontend
       include Lotus::Action
 
       def call(params)
-        redirect_to deployment_path(deployment)
+        redirect_to deployments_path(deployment)
       end
 
       private
 
-      def deployment_path(deployment)
-        "/deployment/#{deployment.id}"
+      def deployments_path(deployment)
+        "/deployments/#{deployment.id}"
       end
 
       def deployment

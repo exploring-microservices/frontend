@@ -15,7 +15,7 @@ module Frontend
       def routes
         Lotus::Router.new do
           get "/", to: Deployments::IndexController
-          post "/deployment/create", to: Deployments::CreateController
+          post "/deployments/create", to: Deployments::CreateController
         end
       end
 

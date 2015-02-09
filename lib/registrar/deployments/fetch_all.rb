@@ -1,7 +1,7 @@
 require "httparty"
 
 module Registrar
-  module Deployment
+  module Deployments
     class FetchAll
       def self.[](registrar_url: ENV["REGISTRAR_URL"])
         new(registrar_url: registrar_url).execute
@@ -28,7 +28,7 @@ module Registrar
       end
 
       def deployments_path
-        "/deployment"
+        "/deployments"
       end
     end
   end

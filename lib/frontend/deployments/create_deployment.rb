@@ -1,5 +1,5 @@
 require "frontend/deployments/deployment"
-require "registrar/deployment/create"
+require "registrar/deployments/create"
 
 module Frontend
   module Deployments
@@ -26,7 +26,7 @@ module Frontend
       end
 
       def parsed_response
-        Registrar::Deployment::Create[data].parsed_response
+        Registrar::Deployments::Create[data].parsed_response
       end
     end
   end

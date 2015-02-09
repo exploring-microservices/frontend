@@ -6,6 +6,6 @@
 
 <ul>
 <% deployments.each do |deployment| %>
-  <li><a href="<%= deployment_path(deployment.id) %>"><%= deployment.name %></a></li>
+  <li><a href="<%= deployments_path(deployment.id) %>"><%= deployment.name %></a></li>
 <% end %>
 </ul>

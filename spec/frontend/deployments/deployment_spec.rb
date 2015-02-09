@@ -2,7 +2,7 @@ require "frontend/deployments/deployment"
 
 describe Frontend::Deployments::Deployment do
   let(:valid_data) {{
-    name: "deployment-name",
+    name: "name",
     source: {
       type: "git",
       url: "git://git@github.com:test/repository.git",
@@ -16,7 +16,7 @@ describe Frontend::Deployments::Deployment do
   }}
 
   let(:invalid_data) {{
-    name: "deployment-name",
+    name: "name",
     source: {},
     destination: {}
   }}
