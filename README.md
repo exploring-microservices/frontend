@@ -1,8 +1,8 @@
 # Frontend
 
-Note: This project is part of a series of blog posts about Microservices.
+Note: This is a sample project in a blog post series about Microservices.
 
-Web frontend for interacting with the [Registrar](https://github.com/exploring-microservices/registrar) API.
+Web frontend for interacting with the [Registrar](https://github.com/site-builder/registrar) API.
 
 ### Local development
 
