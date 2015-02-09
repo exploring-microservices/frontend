@@ -7,10 +7,12 @@ describe Frontend::Deployments::IndexController do
   let(:view) { Frontend::Deployments::Index }
 
   def rendered_html
-    view.render(format: :html)
+    view.render(format: :html, deployments: [])
   end
 
   it "renders the index view" do
+    allow(Frontend::Deployments::FetchDeployments).to receive(:[]).and_return([])
+
     _, _, body = response
     expect(body).to contain_exactly(rendered_html)
   end

@@ -1,5 +1,6 @@
 require "lotus/controller"
 require "frontend/deployments/index"
+require "frontend/deployments/fetch_deployments"
 
 module Frontend
   module Deployments
@@ -14,7 +15,11 @@ module Frontend
       private
 
       def render_index
-        Index.render(format: format)
+        Index.render(format: format, deployments: deployments)
+      end
+
+      def deployments
+        FetchDeployments[]
       end
     end
   end

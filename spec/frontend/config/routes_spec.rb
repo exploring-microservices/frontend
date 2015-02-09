@@ -5,6 +5,8 @@ describe Frontend::Config::Routes do
   let(:mock_request) { Rack::MockRequest.new(routes) }
 
   it "responds with 200 on GET /" do
+    allow(Frontend::Deployments::FetchDeployments).to receive(:[]).and_return([])
+
     response = mock_request.get("/")
     expect(response.status).to eq(200)
   end

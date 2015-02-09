@@ -11,6 +11,10 @@ module Frontend
       def create_path
         "/deployment/create"
       end
+
+      def deployment_path(deployment_id)
+        "/deployment/#{deployment_id}"
+      end
     end
   end
 end

@@ -3,3 +3,9 @@
   <input id="deployment-name" name="name" type="text">
   <input type="submit" value="create">
 </form>
+
+<ul>
+<% deployments.each do |deployment| %>
+  <li><a href="<%= deployment_path(deployment.id) %>"><%= deployment.name %></a></li>
+<% end %>
+</ul>
