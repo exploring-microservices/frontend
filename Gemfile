@@ -1,7 +1,5 @@
 source "https://rubygems.org"
 
-ruby "2.2.0"
-
 gem "lotus-router"
 gem "lotus-view"
 gem "lotus-controller"
