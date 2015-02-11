@@ -1,6 +1,6 @@
 # Frontend
 
-![Codeship build status](https://codeship.com/projects/89586b50-92fa-0132-ea21-66933f4492d6/status?branch=master)
+[![Codeship build status](https://codeship.com/projects/89586b50-92fa-0132-ea21-66933f4492d6/status?branch=master)](https://codeship.com/projects/62095)
 
 Note: This is a sample project in a blog post series about Microservices.
 
