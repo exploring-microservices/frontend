@@ -1,22 +1,22 @@
 require "frontend/deployments/fetch_deployments"
 
 describe Frontend::Deployments::FetchDeployments do
-  let(:data) {{ name: "name" }}
-  let(:parsed_response) { double(parsed_response: [data]) }
+  let(:deployments) { [{name: "name"}, {name: "name-2"}] }
 
   it "calls Registrar::Deployments::FetchAll.[]" do
-    allow(Registrar::Deployments::FetchAll).to receive(:[]).and_return(parsed_response)
+    allow(Registrar::Deployments::FetchAll).to receive(:[]).and_return(deployments)
 
-    described_class.new.execute
+    described_class[]
 
     expect(Registrar::Deployments::FetchAll).to have_received(:[])
   end
 
   it "returns an array of Deployments" do
-    allow(Registrar::Deployments::FetchAll).to receive(:[]).and_return(parsed_response)
+    allow(Registrar::Deployments::FetchAll).to receive(:[]).and_return(deployments)
 
-    service = described_class.new
+    described_class[].each do |deployment|
+      expect(deployment).to be_kind_of(Frontend::Deployments::Deployment)
+    end
 
-    expect(service.execute.first).to be_kind_of(Frontend::Deployments::Deployment)
   end
 end

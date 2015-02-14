@@ -12,7 +12,7 @@ module Registrar
       end
 
       def execute
-        HTTParty.get(fetch_deployments_uri)
+        HTTParty.get(fetch_deployments_uri).parsed_response
       end
 
       private

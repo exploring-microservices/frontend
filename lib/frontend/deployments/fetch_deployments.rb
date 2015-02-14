@@ -15,13 +15,13 @@ module Frontend
       private
 
       def fetch_deployments
-        parsed_response.map do |deployment_data|
+        deployments.map do |deployment_data|
           Deployment.new(deployment_data)
         end
       end
 
-      def parsed_response
-        Registrar::Deployments::FetchAll[].parsed_response
+      def deployments
+        Registrar::Deployments::FetchAll[]
       end
     end
   end
