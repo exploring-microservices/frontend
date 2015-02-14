@@ -13,7 +13,7 @@ module Registrar
       end
 
       def execute
-        HTTParty.post(create_deployments_uri, options)
+        HTTParty.post(create_deployments_uri, options).parsed_response
       end
 
       private

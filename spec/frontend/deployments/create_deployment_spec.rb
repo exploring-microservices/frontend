@@ -1,7 +1,7 @@
 require "frontend/deployments/create_deployment"
 
 describe Frontend::Deployments::CreateDeployment do
-  let(:data) {{
+  let(:deployment) {{
     name: "name",
     source: {
       type: "git",
@@ -14,21 +14,19 @@ describe Frontend::Deployments::CreateDeployment do
       branch: "gh-pages"
     }
   }}
-  let(:parsed_response) { double(parsed_response: data) }
-
 
   it "calls Registrar::Deployments::Create.[]" do
-    allow(Registrar::Deployments::Create).to receive(:[]).and_return(parsed_response)
+    allow(Registrar::Deployments::Create).to receive(:[]).and_return(deployment)
 
-    described_class.new(data).execute
+    described_class.new(deployment).execute
 
-    expect(Registrar::Deployments::Create).to have_received(:[]).with(data)
+    expect(Registrar::Deployments::Create).to have_received(:[]).with(deployment)
   end
 
   it "returns a Deployment" do
-    allow(Registrar::Deployments::Create).to receive(:[]).and_return(parsed_response)
+    allow(Registrar::Deployments::Create).to receive(:[]).and_return(deployment)
 
-    service = described_class.new(data)
+    service = described_class.new(deployment)
 
     expect(service.execute).to be_kind_of(Frontend::Deployments::Deployment)
   end

@@ -22,11 +22,11 @@ module Frontend
       attr_reader :data, :klass
 
       def create_deployment
-        Deployment.new(parsed_response)
+        Deployment.new(deployment)
       end
 
-      def parsed_response
-        Registrar::Deployments::Create[data].parsed_response
+      def deployment
+        Registrar::Deployments::Create[data]
       end
     end
   end
