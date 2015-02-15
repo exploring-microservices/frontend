@@ -1,33 +1,22 @@
-require "httparty"
+require "registrar/request"
 
 module Registrar
   module Deployments
     class FetchAll
-      def self.[](registrar_url: ENV["REGISTRAR_URL"])
-        new(registrar_url: registrar_url).execute
+      def self.[]()
+        new.execute
       end
 
-      def initialize(registrar_url: ENV["REGISTRAR_URL"])
-        @registrar_url = registrar_url
+      def initialize()
       end
 
       def execute
-        HTTParty.get(fetch_deployments_uri).parsed_response
+        Registrar::Request.get(deployments_endpoint)
       end
 
       private
 
-      attr_reader :registrar_url
-
-      def fetch_deployments_uri
-        registrar_uri.merge(deployments_path)
-      end
-
-      def registrar_uri
-        URI::Parser.new.parse(registrar_url)
-      end
-
-      def deployments_path
+      def deployments_endpoint
         "/deployments"
       end
     end
