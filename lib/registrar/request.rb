@@ -1,19 +1,19 @@
 require "httparty"
+require "registrar/configure"
 
 module Registrar
   class Request
-    def self.get(endpoint, registrar_url: ENV["REGISTRAR_URL"])
-      new(Net::HTTP::Get, endpoint, registrar_url: registrar_url).execute
+    def self.get(endpoint)
+      new(Net::HTTP::Get, endpoint).execute
     end
 
-    def self.post(endpoint, data, registrar_url: ENV["REGISTRAR_URL"])
-      new(Net::HTTP::Post, endpoint, data, registrar_url: registrar_url).execute
+    def self.post(endpoint, data)
+      new(Net::HTTP::Post, endpoint, data).execute
     end
 
-    def initialize(method, endpoint, data=nil, registrar_url: ENV["REGISTRAR_URL"])
+    def initialize(method, endpoint, data=nil)
       @method = method
       @endpoint = endpoint
-      @registrar_url = registrar_url
       @data = data
     end
 
@@ -23,10 +23,10 @@ module Registrar
 
     private
 
-    attr_reader :method, :endpoint, :registrar_url, :data
+    attr_reader :method, :endpoint, :data
 
     def url
-      URI.join(registrar_url, endpoint)
+      URI.join(Registrar.configuration.registrar_url, endpoint)
     end
 
     def options
