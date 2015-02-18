@@ -4,7 +4,7 @@ require "registrar/request"
 describe Registrar::Request do
   let(:registrar_url) { "http://test.dev:3000" }
   let(:endpoint) { "/deployments" }
-  let(:deployments_url) { registrar_url + endpoint }
+  let(:request_url) { registrar_url + endpoint }
   let(:data) { {"test" => true} }
 
   around do |example|
@@ -18,30 +18,30 @@ describe Registrar::Request do
   end
 
   it "makes a GET request to {{registrar_url}}/deployments" do
-    stub_request(:get, deployments_url)
+    stub_request(:get, request_url)
 
-    described_class.get("/deployments")
+    described_class.get(endpoint)
 
-    expect(a_request(:get, deployments_url)).to have_been_made
+    expect(a_request(:get, request_url)).to have_been_made
   end
 
   it "returns the parsed_response" do
-    stub_request(:get, deployments_url).to_return({
+    stub_request(:get, request_url).to_return({
       headers: { "Content-type" => "application/json" },
       body: data.to_json
     })
 
-    response = described_class.get("/deployments")
+    response = described_class.get(endpoint)
 
     expect(response).to eq(data)
   end
 
   it "includes the data passed in" do
-    stub_request(:post, deployments_url)
+    stub_request(:post, request_url)
 
-    response = described_class.post("/deployments", data)
+    response = described_class.post(endpoint, data)
 
-    request = a_request(:post, deployments_url).with do |req|
+    request = a_request(:post, request_url).with do |req|
       req.body == data.to_json
     end
 
@@ -49,11 +49,11 @@ describe Registrar::Request do
   end
 
   it "sets the content-type to application/json" do
-    stub_request(:post, deployments_url)
+    stub_request(:post, request_url)
 
-    response = described_class.post("/deployments", data)
+    response = described_class.post(endpoint, data)
 
-    request = a_request(:post, deployments_url).with do |req|
+    request = a_request(:post, request_url).with do |req|
       req.headers["Content-Type"] == "application/json"
     end
 

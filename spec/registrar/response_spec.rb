@@ -1,19 +1,20 @@
 require "registrar/response"
 
 describe Registrar::Response do
-  context "#data" do
-    let(:data) {{ test: true }}
+  def exception(message=nil)
+    Exception.new(message)
+  end
 
+  context "#data" do
     it "is the original data" do
+      data = { test: true }
       expect(described_class.new(data: data).data).to eq(data)
     end
   end
 
   context "#error?" do
-    let(:error) { Exception.new }
-
     it "is true when error is passed in" do
-      response = described_class.new(error: error)
+      response = described_class.new(error: exception)
       expect(response).to have_error
     end
 
@@ -24,12 +25,9 @@ describe Registrar::Response do
   end
 
   context "#error_message" do
-    let(:error_message) { "Not found" }
-    let(:error) { Exception.new(error_message) }
-
     it "is the error message for the error" do
-      response = described_class.new(error: error)
-      expect(response.error_message).to eq(error_message)
+      response = described_class.new(error: exception("not-found"))
+      expect(response.error_message).to eq("not-found")
     end
 
     it "nil if there is no error" do
@@ -39,11 +37,9 @@ describe Registrar::Response do
   end
 
   context "#error" do
-    let(:error) { Exception.new }
-
     it "is the original error" do
-      response = described_class.new(error: error)
-      expect(response.error).to eq(error)
+      response = described_class.new(error: exception)
+      expect(response.error).to eq(exception)
     end
   end
 end

@@ -4,9 +4,9 @@ describe Registrar::Configuration do
   context "#registrar_url" do
     it "saves the registrar_url" do
       config = described_class.new
-      config.registrar_url = "http://localhost:1234"
+      config.registrar_url = "registrar-url"
 
-      expect(config.registrar_url).to eq("http://localhost:1234")
+      expect(config.registrar_url).to eq("registrar-url")
     end
 
     it "raises a Registrar::ConfigurationNotSet when config accessed before it's set" do
