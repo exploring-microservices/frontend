@@ -12,6 +12,13 @@ describe Frontend::Config::Routes do
     expect(response.status).to eq(200)
   end
 
+  it "responds with 200 on GET /deployments/test-id" do
+    allow(Frontend::Deployments::FetchDeploymentById).to receive(:[]).and_return(double(name: nil))
+
+    response = mock_request(described_class.new).get("/deployments/test-id")
+    expect(response.status).to eq(200)
+  end
+
   it "response with 302 on POST /deployments/create" do
     allow(Frontend::Deployments::CreateDeployment).to receive(:[]).and_return(double(id: 1))
 
