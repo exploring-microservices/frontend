@@ -7,7 +7,7 @@ module Registrar
         new.execute
       end
 
-      def initialize()
+      def initialize
       end
 
       def execute
