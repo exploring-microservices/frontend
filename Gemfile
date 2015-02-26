@@ -8,13 +8,9 @@ gem "virtus"
 gem "vanguard"
 gem "dotenv"
 gem "unicorn"
+gem "registrar", github: "site-builder/registrar-rb"
 
 group :development, :test do
   gem "rspec"
   gem "pry"
-end
-
-group :registrar do
-  gem "httparty"
-  gem "webmock"
 end
