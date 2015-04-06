@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/site-builder/registrar-rb.git
-  revision: 1077a1ff9f935f38da246df7910f544ae7928da7
+  revision: 521e036e5927e40cc0ad8976518c5cd73efa225d
   specs:
     registrar (0.0.1)
       httparty
