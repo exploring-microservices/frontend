@@ -1,16 +1,16 @@
 all: clean build run
 
 build:
-	docker build -t spadin/frontend .
+	docker build -t sitebuilder/frontend .
 
 test:
-	docker run spadin/frontend bundle exec rspec
+	docker run sitebuilder/frontend bundle exec rspec
 
 run:
-	docker run -tip 8080:8080 spadin/frontend
+	docker run -tip 8080:8080 sitebuilder/frontend
 
 clean:
-	docker rmi -f spadin/frontend
+	docker rmi -f sitebuilder/frontend
 
 release: clean build test
-	docker push spadin/frontend
+	docker push sitebuilder/frontend
